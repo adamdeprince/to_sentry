@@ -1,0 +1,7 @@
+
+
+import sys
+import to_sentry
+import to_sentry.transmitter
+
+to_sentry.transmitter.send(sys.argv, sys.stdin)    

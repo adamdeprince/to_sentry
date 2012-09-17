@@ -1,0 +1,6 @@
+*~
+#*#
+*.pyc
+build
+dist
+to_sentry.egg-info
