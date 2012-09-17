@@ -12,13 +12,12 @@ def send(argv, stdin, client_factory=raven.Client):
     if len(argv) < 2:
         usage()
         return 1
-    client = client_factory(dsn=ToSentryConfigParser()[argv[1]])
-    data = stdin.read()
-    if data:
-        with warnings.catch_warnings():
-            warnings.simplefilter("ignore")
+    with warnings.catch_warnings():
+        warnings.simplefilter("ignore")
+        client = client_factory(dsn=ToSentryConfigParser()[argv[1]])
+        data = stdin.read()
+        if data:
             client.capture('Message', 
                            message=' '.join(argv[2:]),
                            data = None,
                            extra = {'stdin':data})
-            

@@ -1,4 +1,4 @@
-from ConfigParser import ConfigParser
+from ConfigParser import ConfigParser, Error
 
 class ToSentryConfigParser(ConfigParser):
 
@@ -12,9 +12,9 @@ class ToSentryConfigParser(ConfigParser):
     def __getitem__(self, key):
         try:
             return self.get(key, "url")
-        except ConfigParser.NoSectionError:
+        except Error:
             if key.startswith('http://') or key.startswith('https://'):
                 return key
             else:
-                raise ConfigParser.NoSectionError(key)
+                raise Error(key)
     
