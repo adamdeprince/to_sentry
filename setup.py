@@ -31,7 +31,8 @@ setup(
         'Operating System :: OS Independent',
         'Topic :: Software Development'
     ],
-    scripts = ["scripts/to_sentry",],
+    scripts = ["scripts/tosentry",],
+    url = "https://github.com/adamdeprince/to_sentry",
     install_requires = [
         'raven',
         ]
